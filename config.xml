@@ -19,7 +19,7 @@
 	<preference name="phonegap-version" value="cli-9.0.0" />
 
 	<!-- Android SDK Version -->
-	<preference name="android-minSdkVersion" value="16" />
+	<preference name="android-minSdkVersion" value="19" />
 	<preference name="android-cdvCompileSdkVersion" value="28" />
 	<!-- iOS Version -->
 	<preference name="deployment-target" value="6.1" />
