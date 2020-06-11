@@ -102,7 +102,7 @@
 	<icon src="img/icons/ios/icon.png" gap:platform="ios" width="57" height="57" />
 	<icon src="img/icons/ios/icon@2x.png" gap:platform="ios" width="114" height="114" />
 	<!-- iPad -->
-	<icon src="img/icons/ios/icon-72.png" gap:platform="ios" width="72" height="72" />
+	<icon src="img/icons/ios/icon72.png" gap:platform="ios" width="72" height="72" />
 	<icon src="img/icons/ios/icon-72@2x.png" gap:platform="ios" width="144" height="144" />
 	<!-- iPad Spotlight and Settings Icon -->
 	<icon src="img/icons/ios/icon-50.png" gap:platform="ios" width="50" height="50" />
