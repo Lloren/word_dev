@@ -54,11 +54,11 @@
 
 	<gap:plugin name="phonegap-admob" source="npm" />
 	<gap:plugin name="cordova-plugin-google-analytics" source="npm" />
-	<gap:plugin name="cordova-plugin-statusbar" />
-	<gap:plugin name="cordova-plugin-device" />
-	<gap:plugin name="cordova-plugin-inappbrowser" />
-	<gap:plugin name="cordova-plugin-network-information" />
-	<gap:plugin name="cordova-plugin-splashscreen" />
+	<gap:plugin name="cordova-plugin-statusbar" source="npm" />
+	<gap:plugin name="cordova-plugin-device" source="npm" />
+	<gap:plugin name="cordova-plugin-inappbrowser" source="npm" />
+	<gap:plugin name="cordova-plugin-network-information" source="npm" />
+	<gap:plugin name="cordova-plugin-splashscreen" source="npm" />
 
 	<feature name="http://api.phonegap.com/1.0/network" />
 
