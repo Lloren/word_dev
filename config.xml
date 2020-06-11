@@ -53,7 +53,7 @@
 	<preference name="AutoHideSplashScreen" value="false" />
 
 	<gap:plugin name="phonegap-admob" source="npm" />
-	<gap:plugin name="com.adobe.plugins.gaplugin" />
+	<gap:plugin name="cordova-plugin-google-analytics" source="npm" />
 	<gap:plugin name="org.apache.cordova.statusbar" />
 	<gap:plugin name="org.apache.cordova.device" />
 	<gap:plugin name="org.apache.cordova.inappbrowser" />
