@@ -20,6 +20,7 @@
 
 	<!-- Android SDK Version -->
 	<preference name="android-minSdkVersion" value="16" />
+	<preference name="android-cdvCompileSdkVersion" value="28" />
 	<!-- iOS Version -->
 	<preference name="deployment-target" value="6.1" />
 
