@@ -1,31 +1,42 @@
 'use strict';
 
+importScripts('js/config.js');
+
 self.addEventListener('install', event => {
 	console.log("active", event);
 });
 
 self.addEventListener('activate', event => {
 	console.log("active", event);
+	fetch(url+"/app/version.json").then(response => {
+		console.log(response);
+	});
 });
 
 self.addEventListener('fetch', event => {
 	console.log("fetch", event);
-	if (event.request.method != 'GET') return;
 	
-	// Prevent the default, and handle the request ourselves.
-	event.respondWith(async function() {
-		// Try to get the response from a cache.
-		const cache = await caches.open('dynamic-v1');
-		const cachedResponse = await cache.match(event.request);
-		
-		if (cachedResponse) {
-			// If we found a match in the cache, return it, but also
-			// update the entry in the cache in the background.
-			event.waitUntil(cache.add(event.request));
-			return cachedResponse;
-		}
-		
-		// If we didn't find a match in the cache, use the network.
-		return fetch(event.request);
-	}());
+	event.respondWith(
+		caches.match(event.request).then(function(response) {
+			if (response) {
+				console.log('Found response in cache:', response);
+				
+				return response;
+			}
+			console.log('No response found in cache. About to fetch from network...');
+			
+			var nf = event.request.clone();
+			nf.url = url+"/app/"+nf.url;
+			return fetch(nf).then(function(response) {
+				console.log('Response from network is:', response);
+				
+				cache.put(event.request, response.clone());
+				return response;
+			}).catch(function(error) {
+				console.error('Fetching failed:', error);
+				
+				throw error;
+			});
+		})
+	);
 });
