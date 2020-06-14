@@ -28,7 +28,6 @@ self.addEventListener('fetch', event => {
 			var nf = event.request.clone();
 			nf.url = url+"/app/"+nf.url;
 			return fetch(nf).then(function(response) {
-				
 				console.log('Response from network is:', response);
 				
 				cache.put(event.request, response.clone());
