@@ -1,33 +1,41 @@
 'use strict';
 
 importScripts('js/config.js');
+var cache = false;
 
 self.addEventListener('install', event => {
-	console.log("active", event);
+	console.log("install", event);
 });
 
 self.addEventListener('activate', event => {
 	console.log("active", event);
-	fetch(url+"/app/version.json").then(response => {
+	caches.open("site_cache").then(cache_obj => {
+		cache = cache_obj;
+	});
+	fetch(base_url+"/app_version.json").then(response => {
 		console.log(response);
 	});
 });
 
 self.addEventListener('fetch', event => {
-	console.log("fetch", event);
+	console.log("fetch", event.request.url, event);
+	
+	//if (dev)
+	//	return;
 	
 	event.respondWith(
-		caches.match(event.request).then(function(response) {
+		cache.match(event.request).then(function(response) {
 			if (response) {
 				console.log('Found response in cache:', response);
 				
 				return response;
 			}
-			console.log('No response found in cache. About to fetch from network...');
+			var url = event.request.url;
+			console.log('No response found in cache. About to fetch from network...', url);
 			
-			var nf = event.request.clone();
-			nf.url = url+"/app/"+nf.url;
-			return fetch(nf).then(function(response) {
+			if (!url.match(new RegExp(base_url)))
+				url = base_url+"/app/"+url;
+			return fetch(url).then(function(response) {
 				console.log('Response from network is:', response);
 				
 				cache.put(event.request, response.clone());
