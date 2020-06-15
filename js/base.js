@@ -640,8 +640,8 @@ $(function () {
 		$(".dev").remove();
 	
 	if ("serviceWorker" in navigator){
-		console.log("load worker");
-		navigator.serviceWorker.register(app_url+'pwa_worker.js').then(function(registration) {
+		console.log("load worker", app_url+'pwa_worker.js');
+		navigator.serviceWorker.register(app_url+"pwa_worker.js").then(function(registration) {
 			console.log('Registration successful, scope is:', registration);
 		}).catch(function(error) {
 			console.log('Service worker registration failed, error:', error);
