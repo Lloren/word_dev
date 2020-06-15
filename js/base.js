@@ -607,7 +607,7 @@ function online_check(){
 	}
 }
 
-function onLoad(){
+function on_load(){
 	document.addEventListener("deviceready", on_ready, false);
 	document.addEventListener("online", function (){
 		has_internet = navigator.connection.type != Connection.NONE;
@@ -625,7 +625,7 @@ function onLoad(){
 	}, false);
 }
 
-function onunload(){
+function on_unload(){
 	track("Close", "close");
 	if (typeof GA != "undefined") {
 		GA.exit(false, false);
@@ -641,7 +641,7 @@ $(function () {
 	
 	if ("serviceWorker" in navigator){
 		console.log("load worker");
-		navigator.serviceWorker.register('pwa_worker.js').then(function(registration) {
+		navigator.serviceWorker.register(app_url+'pwa_worker.js').then(function(registration) {
 			console.log('Registration successful, scope is:', registration);
 		}).catch(function(error) {
 			console.log('Service worker registration failed, error:', error);

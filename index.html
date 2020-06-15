@@ -24,7 +24,7 @@
 	<script src="js/base.js"></script>
 	<script src="js/main.js"></script>
 </head>
-<body onload="onLoad()" onunload="onunload()">
+<body onload="on_load()" onunload="on_unload()">
 
 <div id="templates" style="display: none;">
 </div>
@@ -37,62 +37,75 @@
 		<a id="mbutton1">Ok</a>
 		<a id="mbutton2">Cancel</a>
 	</div>
-</div>
-
-<div id="navbutton">
-	<i class="fa fa-bars"></i>
-</div>
-
-<div id="nav-overlay"></div>
-<div id="nav">
-	<ul>
-		<li>Title</li>
-		<li><a href="#">Settings</a></li>
-		<li><a href="#">About Us</a></li>
-	</ul>
-</div>
-
-<div id="homepage" class="page show shown" data-on_open="open_homepage">
-	<div class="content">
-		<div id="game_board">
-			<div class="board_colomn">
+	
+	<div id="navbutton">
+		<i class="fa fa-bars"></i>
+	</div>
+	
+	<div id="nav-overlay"></div>
+	<div id="nav">
+		<ul>
+			<li>Title</li>
+			<li><a>Settings</a></li>
+			<li><a>About Us</a></li>
+		</ul>
+	</div>
+	
+	<div id="homepage" class="page show shown" data-on_open="open_homepage">
+		<div class="content">
+			<div id="game_board">
+				<div class="board_colomn">
+				
+				</div>
+				<div class="board_colomn">
+				
+				</div>
+				<div class="board_colomn">
+				
+				</div>
+				<div class="board_colomn">
+				
+				</div>
+				<div class="board_colomn">
+				
+				</div>
+				<div class="board_colomn">
+				
+				</div>
+				<div class="board_colomn">
+				
+				</div>
+				<div class="board_colomn">
+				
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div id="submit">Submit</div>
+			<div>
+				Current word: <div id="cur_word"></div>
+			</div>
+			
+			<div id="word_list">
 			
 			</div>
-			<div class="board_colomn">
-			
-			</div>
-			<div class="board_colomn">
-			
-			</div>
-			<div class="board_colomn">
-			
-			</div>
-			<div class="board_colomn">
-			
-			</div>
-			<div class="board_colomn">
-			
-			</div>
-			<div class="board_colomn">
-			
-			</div>
-			<div class="board_colomn">
-			
-			</div>
-			<div class="clear"></div>
-		</div>
-		<div id="submit">Submit</div>
-		<div>
-			Current word: <div id="cur_word"></div>
-		</div>
-		
-		<div id="word_list">
-		
 		</div>
 	</div>
-</div>
 
 </div>
+
+<script>
+	var base_url = "https://word.dev.2dio.com";
+	var app_url = base_url+ "/app/";
+	var a = document.querySelectorAll("[src], [href]");
+	var url_reg = new RegExp(app_url);
+	for (var i in a) {
+		console.log(a[i], a[i].href, a[i].src);
+		if (a[i].href && !a[i].href.match(url_reg))
+			a[i].href = app_url + a[i].href;
+		if (a[i].src && a[i].src != "cordova.js" && !a[i].src.match(url_reg))
+			a[i].src = app_url + a[i].src;
+	}
+</script>
 
 </body>
 </html>
