@@ -98,12 +98,13 @@
 	var app_url = base_url+ "/app/";
 	var a = document.querySelectorAll("[src], [href]");
 	var url_reg = new RegExp(app_url);
+	var file_reg = new RegExp("file://.*www/");
 	for (var i in a) {
 		console.log(a[i], a[i].href, a[i].src);
 		if (a[i].href && !a[i].href.match(url_reg))
-			a[i].href = app_url + a[i].href;
+			a[i].href = app_url + a[i].href.replace(file_reg, "");
 		if (a[i].src && a[i].src != "cordova.js" && !a[i].src.match(url_reg))
-			a[i].src = app_url + a[i].src;
+			a[i].src = app_url + a[i].src.replace(file_reg, "");
 	}
 </script>
 
